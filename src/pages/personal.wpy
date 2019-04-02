@@ -58,35 +58,57 @@
       height: 0;
       overflow: hidden;
     }
-
-    .header-image {
-      height: 50px;
-      width: 50px;
+    .userinfo {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .userinfo-avatar {
+      align-items: center;
+      overflow:hidden;
+      display: block;
+      width: 160rpx;
+      height: 160rpx;
+      margin: 20rpx;
+      margin-top: 50rpx;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    .userinfo{
+      /* color: #fff; */
+      font-size: 14px;
+      border-radius:40%;
     }
   }
 </style>
 <template>
   <view class="index page">
     <view class="page__hd">
-      <image class="header-image" src="../images/toolbar/user.png"></image>
-      <view class="username">hello world</view>
-    </view>
-    <view class="page__bd page__bd_spacing">
-      <view class="kind-list">
-        <repeat for="{{list}}" key="id">
-          <view class="kind-list__item">
-            <view id="{{item.id}}" class="weui-flex kind-list__item-hd" @tap="navigatorClick({{item.uri}})">
-              <view class="weui-flex__item" >{{item.name}}</view>
-              <image class="kind-list__img" src="../images/icon_nav_{{item.id}}.png"></image>
-            </view>
-          </view>
-        </repeat>
+      <view class="userinfo">
+        <view class="userinfo-avatar">
+          <open-data  type="userAvatarUrl"></open-data>
+        </view>
+        <open-data type="userNickName"></open-data>
       </view>
     </view>
-    <view class="page__ft">
-      <l>Designed By 辉锋炫杰</l>
+      <view class="page__bd page__bd_spacing">
+        <view class="kind-list">
+          <repeat for="{{list}}" key="id">
+            <view class="kind-list__item">
+              <view id="{{item.id}}" class="weui-flex kind-list__item-hd" @tap="navigatorClick({{item.uri}})">
+                <view class="weui-flex__item">{{item.name}}</view>
+                <image class="kind-list__img" src="../images/icon_nav_{{item.id}}.png"></image>
+              </view>
+            </view>
+          </repeat>
+        </view>
+      </view>
+      <view class="page__ft">
+        <l>Designed By 辉锋炫杰</l>
+      </view>
     </view>
-  </view>
 </template>
 
 <script>
@@ -118,7 +140,10 @@
           name: '我的会员',
           uri: 'index'
         }
-      ]
+      ],
+      user: {
+        userinfo: null
+      }
     }
     methods = {
       navigatorClick(url) {
@@ -127,6 +152,17 @@
           url: 'demo'
         })
       }
+    }
+
+    // 这里用self标识当前页面内容，更新全局变量
+    onLoad() {
+      // let self = this
+      // this.$parent.getUserInfo(function (userInfo) {
+      //   if (userInfo) {
+      //     self.userInfo = userInfo
+      //   }
+      //   self.$apply()
+      // })
     }
   }
 </script>

@@ -1,0 +1,132 @@
+<style type="less">
+  .index {
+    .weui-flex {
+      align-items: center;
+    }
+
+    .weui-cells {
+      margin-top: 0;
+      opacity: 0;
+      transform: translateY(-50%);
+      transition: .3s;
+
+      &:before, &:after {
+        display: none;
+      }
+
+      &_show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .weui-cell {
+      &:before {
+        right: 15px;
+      }
+    }
+
+    .kind-list {
+    }
+
+    .kind-list__item {
+      margin: 10px 0;
+      background-color: #FFFFFF;
+      border-radius: 2px;
+      overflow: hidden;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .kind-list__img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .kind-list__item-hd {
+      padding: 20px;
+      transition: opacity .3s;
+
+      &_show {
+        opacity: .4;
+      }
+    }
+
+    .kind-list__item-bd {
+      height: 0;
+      overflow: hidden;
+    }
+
+    .header-image {
+      height: 50px;
+      width: 50px;
+    }
+  }
+</style>
+<template>
+  <view class="index page">
+    <view class="page__hd">
+      <image class="header-image" src="../images/toolbar/user.png"></image>
+      <view class="username">hello world</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+      <view class="kind-list">
+        <repeat for="{{list}}" key="id">
+          <view class="kind-list__item">
+            <view id="{{item.id}}" class="weui-flex kind-list__item-hd" @tap="navigatorClick({{item.uri}})">
+              <view class="weui-flex__item" >{{item.name}}</view>
+              <image class="kind-list__img" src="../images/icon_nav_{{item.id}}.png"></image>
+            </view>
+          </view>
+        </repeat>
+      </view>
+    </view>
+    <view class="page__ft">
+      <l>Designed By 辉锋炫杰</l>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+    data = {
+      list: [
+        {
+          id: 'nav',
+          name: '个人信息',
+          uri: 'personal'
+        },
+        {
+          id: 'form',
+          name: '我的课程',
+          uri: 'details'
+        },
+        {
+          id: 'search',
+          name: '我的成绩',
+          uri: 'index'
+        },
+        {
+          id: 'search',
+          name: '我的会员',
+          uri: 'index'
+        }
+      ]
+    }
+    methods = {
+      navigatorClick(url) {
+        console.log(url)
+        wx.navigateTo({
+          url: 'demo'
+        })
+      }
+    }
+  }
+</script>

@@ -1,0 +1,41 @@
+<style lang="less">
+  .weui-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .scrolBig {
+  }
+</style>
+<template>
+  <div class="table">
+    <div>
+      <image class="scrolBig" src="../images/toolbar/earthed.png"></image>
+    </div>
+    <div>title\n</div>
+    <div>这就是传说中的课程介绍，里面会包括老师名字，授课方式，授课内容简介，面向人群等等\n</div>
+    <div><list>
+      这里之后会用循环打印出简单的demo\n
+    </list></div>
+  </div>
+  <div class="weui-footer">
+    <button class="weui-btn" type="primary">点击加入课程</button>
+  </div>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

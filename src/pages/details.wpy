@@ -12,19 +12,36 @@
     right: 10px;
   }
 
+  .title {
+    border: 2px solid burlywood;
+    border-radius: 10px;
+    float: left;
+    width: 250px;
+    margin-top: 15px;
+  }
+
+  .description {
+    border-radius: 10px;
+    float: left;
+    width: 250px;
+    margin-top: 15px;
+  }
+
 </style>
 <template>
   <div class="table">
     <div>
       <image class="scrolBig" src="../images/toolbar/earthed.png"></image>
     </div>
-    <div>title\n</div>
-    <div>这就是传说中的课程介绍，里面会包括老师名字，授课方式，授课内容简介，面向人群等等\n</div>
-    <div>
+    <div class="title">Course Name: {{course.courseName}}</div>
+    <div class="title">Teacher Name: {{course.teacher}}</div>
+    <br>
+    <div class="description">这就是传说中的课程介绍，里面会包括授课方式，授课内容简介，面向人群等等\n</div>
+    <div class="description">
       <repeat for="{{list}}" key="id">
         <view class="list_body">
           <view id="{{item.id}}" class="list_item">
-             <!--超级简陋版-->
+            <!--超级简陋版-->
             <view class="list_name">***{{item.name}}****</view>
             <!--<image class="list_img" src="../images/icon_nav_form.png"></image>-->
           </view>
@@ -33,7 +50,7 @@
     </div>
   </div>
   <div class="weui-footer">
-    <button class="weui-btn" type="primary">点击加入课程</button>
+    <button class="weui-btn" type="primary" @tap="navigatorClick()">点击进入课程学习</button>
   </div>
 </template>
 
@@ -42,10 +59,15 @@
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: '课程详情'
     }
     data = {
       // 课程信息根据id读取一个json数组转化或者直接json读取到时候再看，这里就一个简单数组，初始默认只有章节列表
+      course: {
+        courseId: '1',
+        courseName: 'PE',
+        teacher: 'TOMMMM'
+      },
       list: [
         {
           id: '1001',
@@ -85,8 +107,23 @@
       }
     }
 
+    methods = {
+      navigatorClick() {
+        wepy.navigateTo({
+          url: 'study'
+        })
+      }
+    }
+
     onLoad() {
       console.log('onLoad')
+      let that = this
+      that.setData({
+        'course.teacher': this.$parent.globalData.currentCourse.teacher,
+        'course.courseName': this.$parent.globalData.currentCourse.courseName,
+        'course.courseId': this.$parent.globalData.currentCourse.courseId
+      })
+      console.log(that.course.teacher)
     }
   }
 </script>

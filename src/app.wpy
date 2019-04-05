@@ -47,12 +47,14 @@
         'pages/index',
         'pages/personal',
         'pages/details',
-        'pages/demo'
+        'pages/personInfo',
+        'pages/study',
+        'pages/question'
       ],
       window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#fff',
-        navigationBarTitleText: 'WeChat',
+        navigationBarTitleText: '天天课堂',
         navigationBarTextStyle: 'black'
       },
       tabBar: {
@@ -66,10 +68,10 @@
           selectedIconPath: 'images/toolbar/menued.png',
           text: 'Home'
         }, {
-          pagePath: 'pages/details',
+          pagePath: 'pages/question',
           iconPath: 'images/toolbar/earth.png',
           selectedIconPath: 'images/toolbar/earthed.png',
-          text: 'details'
+          text: 'questions'
         }, {
           pagePath: 'pages/personal',
           iconPath: 'images/toolbar/user.png',
@@ -79,7 +81,12 @@
       }
     }
     globalData = {
-      userInfo: null
+      userInfo: null,
+      currentCourse: {
+        courseId: '1',
+        teacher: 'Tom',
+        courseName: 'PE'
+      }
     }
 
     onLaunch() {

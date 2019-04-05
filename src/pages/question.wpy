@@ -1,0 +1,83 @@
+<style lang="less">
+  .user_image{
+    width: 30px;
+    height: 30px;
+    border-radius:50%;
+    float: left;
+    margin-right: 5px;
+
+  }
+  .name{
+    font-size: 13px;
+    padding-top: 5px;
+    font-weight: bold;
+    color: navy;
+
+  }
+  .text{
+    margin-top: 10px;
+    padding: 0 10px 10px 25px;
+  }
+  .ques{
+    margin: 10px 0 10px 0;
+    padding-left: 5px;
+    border-bottom: 0.5px solid lavender;
+  }
+  button{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+
+
+
+</style>
+<template>
+  <div>
+    <repeat for="{{list}}" key="id">
+      <view id="{{item.id}}" class="ques">
+        <image src="../images/user_{{item.id}}-min.png" class="user_image"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="text">{{item.content}}</view>
+        <HR>
+      </view>
+    </repeat>
+    <button type="warn">我要提问</button>
+  </div>
+
+
+
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '提问版'
+    }
+    data = {
+      list: [
+        {
+          id: 'first',
+          name: '用户one',
+          content: '这是问题1这是问题1这是问题1这是问题1这是问题1这是问题1这是问题1这是问题1'
+        },
+        {
+          id: 'second',
+          name: '用户two',
+          content: '这是问题2这是问题2这是问题2这是问题2这是问题2这是问题2这是问题2'
+        },
+        {
+          id: 'third',
+          name: '用户three',
+          content: '这是问题3这是问题3这是问题3这是问题3这是问题3这是问题3这是问题3这是问题3这是问题3这是问题3'
+        }
+      ],
+      user: {
+        userinfo: null
+      }
+    }
+  }
+</script>

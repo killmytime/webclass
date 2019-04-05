@@ -1,0 +1,84 @@
+<style lang="less">
+  .teacher_image{
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-top: 15px;
+  }
+
+  .text{
+    border: 2px solid saddlebrown ;
+    border-radius:10px;
+    float: left;
+    padding-left: 10px;
+    width: 250px;
+    margin-top: 15px;
+  }
+  .dialog{
+    padding-top: 10px;
+
+  }
+  .student_image{
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin-top: 15px;
+  }
+  .option{
+    float: left;
+    border: 2px solid saddlebrown ;
+    border-radius:10px;
+    margin-top: 15px;
+  }
+
+  button{
+    text-align: left;
+    font-size: 16px;
+  }
+</style>
+<template>
+  <div class="teacher">
+    <repeat for="{{list}}" key="id">
+      <view id="{{item.id}}" class="dialog">
+        <image src="../images/teacher.png" class="teacher_image"></image>
+        <view class="text">{{item.name}}</view>
+      </view>
+    </repeat>
+  </div>
+  <div class="student">
+    <image src="../images/student.png" class="student_image"></image>
+    <view class="option">
+      <button>A.我的电脑是windows系统的</button>
+      <button>B.我的电脑是mac系统的</button>
+    </view>
+  </div>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '课程学习'
+    }
+    data = {
+      list: [
+        {
+          id: 'first',
+          name: '你好，初次见面，我是你的课程导师。从现在开始，你就要跟我一起学习啦！请敲回车键继续课程。'
+        },
+        {
+          id: 'second',
+          name: '为了能不受干扰地学习，在正式上课之前，请你先按照提示将本页面保存为书签并全屏吧。'
+        },
+        {
+          id: 'third',
+          name: '请问您的电脑是windows系统还是mac系统呢？'
+        }
+      ],
+      user: {
+        userinfo: null
+      }
+    }
+  }
+</script>

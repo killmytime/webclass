@@ -16,6 +16,7 @@
   }
   .dialog{
     padding-top: 10px;
+    width: 300px;
 
   }
   .student_image{
@@ -23,6 +24,10 @@
     width: 30px;
     float: left;
     margin-top: 15px;
+  }
+
+  .student{
+    width: 300px;
   }
   .option{
     float: left;
@@ -45,13 +50,13 @@
       </view>
     </repeat>
   </div>
-  <div class="student">
+  <view class="student">
     <image src="../images/student.png" class="student_image"></image>
     <view class="option">
       <button>A.我的电脑是windows系统的</button>
       <button>B.我的电脑是mac系统的</button>
     </view>
-  </div>
+  </view>
 </template>
 
 <script>
